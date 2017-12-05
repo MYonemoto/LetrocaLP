@@ -31,7 +31,7 @@
 ;Definição executa
 
 (define executa
-  (lambda (arquivo score PalavraEmbaralhada)
+  (lambda (arquivo PalavraEmbaralhada)
     ;(print arquivo)
   (define PalavrasAcertadas '())
   (let ()
@@ -74,7 +74,7 @@
 ;---------------------------------------------    
 
 (define abrirArquivo
-  (lambda (arquivo nomearq score)
+  (lambda (arquivo nomearq)
   
      ;Abrindo arquivo
      (define x (file->lines nomearq))
@@ -92,31 +92,49 @@
      ;(print PalavraEmbaralhada)
 
 
-    (executa arquivo score PalavraEmbaralhada)
+    (executa arquivo PalavraEmbaralhada)
     
   )
 )
 
 (define score 0)
 
-(define nomeArquivos (shuffle (file->lines "Arquivos.txt")))
+
 ;nomeArquivos
 
-(define arquivo '())
 
-(let ()
+
+(define main
+ (lambda()
+   (define nomeArquivos (shuffle (file->lines "Arquivos.txt")))
+   (define arquivo '())
+   (set! score 0)
+   (let ()
      (while (not(empty? nomeArquivos))
 
             (define nomearq (first nomeArquivos))
 
-            (abrirArquivo arquivo nomearq score)
+            (abrirArquivo arquivo nomearq)
 
             (set! nomeArquivos(delete nomearq nomeArquivos))
             (displayln "PARABÉNS, VOCÊ ACERTOU TODAS AS PALAVRAS!\n")
             ;(display nomeArquivos)
      )
+   )
+
+   
+   (displayln "FIM DE JOGO!")
+   (displayln "DIGITE: 1 - JOGAR NOVAMENTE  2 - SAIR")
+   (define menu (read-line))
+   (if (equal? menu "1")(main) 'saindo)
+
+   
+   
+
+ )
 )
 
+(main)
 
 
 
