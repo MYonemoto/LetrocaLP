@@ -1,4 +1,5 @@
-Não zerar score quando trocar de palavra (letroca original é assim)
-Fazer algo tipo um menu (1 - continuar jogando 2 - sair)
+Não zerar score quando trocar de palavra (letroca original é assim) FEITO
+Fazer algo tipo um menu (1 - continuar jogando 2 - sair) FEITO
 Caso acertar a maior palavra pode passar pra outra palavra (letroca original é assim)
 Se errar 3x (por exemplo) ele perde
+Embaralhar palavra quando quiser FEITO

@@ -32,6 +32,9 @@
 
 (define executa
   (lambda (arquivo PalavraEmbaralhada)
+     (define p (first arquivo))
+     (define a (string->list p))
+     (define PalavraEmbaralhada2 " ")
     ;(print arquivo)
   (define PalavrasAcertadas '())
   (let ()
@@ -40,33 +43,43 @@
          (displayln PalavrasAcertadas)
          (display "Score: ")
          (displayln score)
-         (displayln PalavraEmbaralhada)
+         (display PalavraEmbaralhada)
+         (displayln "           DIGITE 1 PARA EMBARALHAR A PALAVRA")
          (define u(read-line))
-           (if (member u arquivo)
+           (if(equal? u "1")
               (begin
-                  (println "ACERTOU!")
-                  (newline)
-                  (set! score(+ score 10))
-                  (set! PalavrasAcertadas(append PalavrasAcertadas (list u)))
-                  (set! arquivo(delete u arquivo))
-              )
-              (begin
-                  (if(member u PalavrasAcertadas)
+                 (set! PalavraEmbaralhada (list->string (shuffle a)))
+                
+              )(begin
+               
+                 (if (member u arquivo)
                      (begin
-                         (println "ESSA PALAVRA JÁ FOI ENCONTRADA!!")
-                         (newline)
-                     )
+                       (println "ACERTOU!")
+                       (newline)
+                       
+                       (set! score(+ score 10))
+                       (set! PalavrasAcertadas(append PalavrasAcertadas (list u)))
+                       (set! arquivo(delete u arquivo))
+                       )
                      (begin
-                         (println "ERROU!")
-                         (set! score (- score 5))
-                         (newline)
-                     )
+                       (if(member u PalavrasAcertadas)
+                          (begin
+                            (println "ESSA PALAVRA JÁ FOI ENCONTRADA!!")
+                            (newline)
+                            )
+                          (begin
+                            (println "ERROU!")
+                            (set! score (- score 5))
+                            (newline)
+                           )
+                       )
+                      )
                   )
-              )
+               )
            )
+         )
      )
-  )
- )
+    )
 )
 
 
